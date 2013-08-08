@@ -1,0 +1,8 @@
+startup_message off
+vbell off
+
+caption always "[%H]  [screen %n: %t]  [load:%l]    [%M %d, %Y, %c]"
+hardstatus on
+hardstatus alwayslastline
+#hardstatus string "%H // screen %n: %t // %M %d, %Y, %c // load:%l"
+hardstatus string "%w"

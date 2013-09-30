@@ -1,13 +1,13 @@
 #!/bin/bash
 
+# Installs dotfiles in home directory.
+
 dotfiles=${HOME}/dotfiles
 
-if [ -f "$dotfiles/screenrc" ]
-then
-  if [ -f "${HOME}/.screenrc" ]
-  then
-    mv ${HOME}/.screenrc ${HOME}/.screenrc.bak
+for dotfile in `ls $dotfiles`; do
+  # Backup existing version of dotfile.
+  if [ -f "${HOME}/${dotfile}" ]; then
+    mv ${HOME}/${dotfile} ${HOME}/${dotfile}.bak
   fi
-  ln -s ${dotfiles}/screenrc ${HOME}/.screenrc
-fi
-
+  ln -s ${dotfiles}/${dotfile} ${HOME}/${dotfile}
+done

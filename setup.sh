@@ -10,11 +10,9 @@ echo "Changing directories to $dotfiles"
 cd $dotfiles
 
 for dotfile in `ls -a`; do
-  #if [ "$dotfile" == "." -o "$dotfile" == ".." -o "$dotfile" == "$cmd" ]; then
-  if [[ $ignore =~ $dotfile ]]; then
-    echo "Ignoring $dotfile"
-    continue
-  fi
+  #if [[ $ignore =~ $dotfile ]]; then
+  [[ $ignore =~ $dotfile ]] && echo "Ignoring $dotfile" && continue
+  #fi
   # Backup existing version of dotfile.
   echo "Backing up ${dotfile}"
   if [ -e "${HOME}/${dotfile}" ]; then

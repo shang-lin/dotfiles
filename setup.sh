@@ -11,7 +11,7 @@ cd $dotfiles
 
 for dotfile in `ls -a`; do
   #if [[ $ignore =~ $dotfile ]]; then
-  [[ $ignore =~ $dotfile ]] && echo "Ignoring $dotfile" && continue
+  [[ $ignore =~ $dotfile ]] && continue
   #fi
   # Backup existing version of dotfile.
   echo "Backing up ${dotfile}"

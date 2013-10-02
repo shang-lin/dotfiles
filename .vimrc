@@ -30,6 +30,8 @@ au BufRead,BufNewFile *.pp
 au BufRead,BufNewFile *_spec.rb
   \ nmap <F8> :!rspec --color %<CR>
 
+map <C-n> :NERDTreeToggle<CR>
+
 execute pathogen#infect()
 " Enable indentation matching for =>'s
 filetype plugin indent on

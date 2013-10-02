@@ -6,7 +6,7 @@ dotfiles=${HOME}/dotfiles
 cmd=`basename $0`
 ignore="$cmd .git . .."
 
-echo "Changing directories to $dotfiles"
+echo "Installing $dotfiles"
 cd $dotfiles
 
 for dotfile in `ls -a`; do

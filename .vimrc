@@ -37,6 +37,9 @@ au BufRead,BufNewFile *.pp
 au BufRead,BufNewFile *_spec.rb
   \ nmap <F8> :!rspec --color %<CR>
 
+" Set .pc files to filetype C.
+au BufRead,BufNewFile *.pc set filetype=cpp
+
 map <C-n> :NERDTreeToggle<CR>
 
 execute pathogen#infect()

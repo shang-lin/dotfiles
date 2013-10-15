@@ -40,7 +40,7 @@ au BufRead,BufNewFile *_spec.rb
 " Set .pc files to filetype C.
 au BufRead,BufNewFile *.pc set filetype=cpp
 
-map <C-n> :NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 
 execute pathogen#infect()
 " Enable indentation matching for =>'s

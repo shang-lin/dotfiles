@@ -7,8 +7,12 @@ set modeline
 
 syntax on
 
+" Display line numbers.
+set number
+
 " Set color scheme for gvim.
-colorscheme darkblue
+" colorscheme darkblue
+colorscheme desert
 
 " Set background depending on your terminal setup.
 set background=dark

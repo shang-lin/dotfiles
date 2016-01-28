@@ -49,3 +49,13 @@ map <F2> :NERDTreeToggle<CR>
 execute pathogen#infect()
 " Enable indentation matching for =>'s
 filetype plugin indent on
+
+" Options for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

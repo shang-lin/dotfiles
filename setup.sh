@@ -4,7 +4,7 @@
 
 dotfiles=${HOME}/dotfiles
 cmd=`basename $0`
-ignore="$cmd .git . .."
+ignore="$cmd .git README.md . .."
 
 echo "Installing $dotfiles"
 cd $dotfiles

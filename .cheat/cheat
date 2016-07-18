@@ -1,0 +1,8 @@
+# Display version number and exit.
+  cheap -v
+
+# Display all available cheatsheets.
+  cheat -l
+
+# Edit or create a new cheatsheet.
+  cheat -e

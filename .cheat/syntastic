@@ -1,0 +1,10 @@
+# Syntastic is a vim pluging that checks syntax for various common languages.
+
+# To toggle Syntastic on/off for a file:
+  :SyntasticToggleMode
+
+# To run a Syntastic check on a file:
+  :SyntasticCheck
+
+# To display information about a file, include file type and parsers:
+  :SyntasticInfo

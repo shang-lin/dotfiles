@@ -1,0 +1,23 @@
+# Oracle cheatsheet
+
+# Display datafiles for a tablespace called 'mytablespace'.
+select db.FILE_NAME,
+db.AUTOEXTENSIBLE,
+db.INCREMENT_BY,
+db.USER_BLOCKS,
+t.INITIAL_EXTENT,
+t.NEXT_EXTENT,
+t.EXTENT_MANAGEMENT
+FROM dba_data_files db,
+dba_tablespaces t
+where db.TABLESPACE_NAME = t.TABLESPACE_NAME
+and t.TABLESPACE_NAME = 'mytablespace';
+
+# Display size in megabytes of the datafiles for 'mytablespace'.
+select tablespace_name,file_name,bytes/1024/1024 from dba_data_files where tablespace_name='mytablespace';
+
+# Resize datafile to 750 MB.
+alter database datafile '/path/to/datafile.dbf' resize 750M;
+
+# Add a datafile to 'mytablespace'
+alter tablespace mytablespace add datafile '/path/to/datafile.dbf' size 500M;

@@ -1,0 +1,35 @@
+# How to Handle Time and Date in Python
+
+import time
+
+# Get current time in epoch seconds.
+time.time()
+
+# datetime.date represents a day.
+from datetime import date
+today = date.today()
+# Value of today:
+# datetime.date(2016, 7, 26) 
+
+# Create a date object.
+tomorrow = date(2016, 7, 27)
+# The difference is a datetime.timedelta object.
+diff = tomorrow - today
+
+# Construct a date object from the current epoch timestamp.
+# The same method can be used to initialize a datetime.datetime object.
+date.fromtimestamp(time.time())
+
+# Construct a datetime object from the current timestamp.
+from datetime import datetime
+datetime.fromtimestamp(time.time())
+
+# Set the timezone.
+from pytz import timezone
+datetime.fromtimestamp(time.time(), timezone('US/Mountain'))
+
+# Get the current time in UTC.
+datetime.now(timezone('UTC'))
+# ... And in system time.
+datetime.now()
+

@@ -1,0 +1,11 @@
+My data directory is /Volume/Seagate\ Backup\ Disk/Ethereum.
+
+To get a console:
+  geth --datadir <my_datadir> console
+
+At the console, to get my default account's balance:
+  web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+
+To list accounts from the command line:
+  geth --datadir <my_datadir> account list
+

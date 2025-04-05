@@ -31,3 +31,68 @@ function win2unix() {
     mv ${filename}.tmp ${filename}
   fi
 }
+
+# Mounts my home directory using sshfs in /tmp.
+# arguments:
+# servername
+# username - 'schen' by default, unless one is specified.
+function mount_ssh () {
+  if [ -z $1 ]; then
+    echo "usage: mount_ssh servername [username]"
+    return
+  fi
+  server=$1
+  if [ -z $2 ]; then
+    user=schen
+  else
+    user=$2
+  fi
+
+  mountpoint="${HOME}/sshfs/${server}"
+  if [ ! -d ${mountpoint} ]; then
+    echo "Creating ${mountpoint}"
+    mkdir ${mountpoint}
+  fi
+  echo "Mounting $mountpoint"
+  sshfs ${server}:/home/${user} ${mountpoint} -o auto_cache
+}
+
+function umount_ssh () {
+  host=$1
+  pid=$(pgrep -f "sshfs $host")
+  if [ -z $pid ]; then
+     echo "sshfs process not found for ${host}."
+  else
+      echo "Killing $pid"
+      kill $pid
+  fi
+}
+
+# Activates the Anaconda environment and starts Jupyter notebook.
+# If no argument is provided, run jupyter in the current directory.
+# If an argument is provided, change to the directory.
+function run_notebook() {
+  . ${HOME}/anaconda_env.bash
+  if [ -z $1 ]; then
+    jupyter notebook
+  else
+    directory=$1
+    . ${HOME}/anaconda_env.bash
+    pushd $directory
+    jupyter notebook
+    popd
+  fi
+}
+
+# Set the prompt to the working directory and the weather
+# from wttr.in.
+function set_weather_prompt() {
+  weather=$(curl -s -S wttr.in/?format=1)
+  if [[ "$?" -eq "0" ]]; then
+    export PS1="\h:\W ${weather} $ "
+  fi
+}
+
+function parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
